@@ -1,35 +1,41 @@
 <app-toast [message]="toastMessage" [type]="toastType"></app-toast>
 
-<form [formGroup]="loginForm" (ngSubmit)="submit()">
+<form class="auth-card" [formGroup]="loginForm" (ngSubmit)="submit()">
   <h2>Login</h2>
-  <input type="email" placeholder="Email" formControlName="email" />
+
+  <!-- Email -->
   <div
-    *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+    class="field"
+    [class.has-error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
   >
-    Valid email is required
+    <input type="email" placeholder="Email" formControlName="email" />
+    <div class="error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+      Valid email is required
+    </div>
   </div>
 
-  <input type="password" placeholder="Password" formControlName="password" />
+  <!-- Password -->
   <div
-    *ngIf="
-      loginForm.get('password')?.invalid && loginForm.get('password')?.touched
-    "
+    class="field"
+    [class.has-error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
   >
-    Password is required
+    <input type="password" placeholder="Password" formControlName="password" />
+    <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      Password is required
+    </div>
   </div>
 
   <button type="submit" [disabled]="loading">
     {{ loading ? "Logging in..." : "Login" }}
   </button>
 
-  <p *ngIf="errorMsg" style="color: red">
+  <!-- Backend error -->
+  <p *ngIf="errorMsg" class="form-error">
     {{ errorMsg }}
   </p>
 
-  <p style="text-align: center; margin-top: 15px">
+  <p class="footer-text">
     Don't have an account?
-    <a routerLink="/signup" style="color: #4f46e5; text-decoration: none"
-      >Sign up here</a
-    >
+    <a routerLink="/signup">Sign up here</a>
   </p>
 </form>
