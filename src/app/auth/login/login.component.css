@@ -1,0 +1,85 @@
+/* Container Form Styling */
+form {
+  max-width: 380px;
+  margin: 80px auto;
+  padding: 30px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Inputs and Selects */
+input,
+select {
+  width: 100%;
+  padding: 11px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Focus effect */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #4f46e5; /* Indigo focus */
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* Validation messages */
+div {
+  font-size: 12px;
+  color: #e11d48; /* Red for errors */
+  margin-bottom: 8px;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  background: #4f46e5; /* Indigo button */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #4338ca; /* Darker on hover */
+}
+
+button:disabled {
+  background: #a5a5a5;
+  cursor: not-allowed;
+}
+
+/* Paragraph / link under form */
+p {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+/* Link styling */
+p a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+p a:hover {
+  text-decoration: underline;
+}

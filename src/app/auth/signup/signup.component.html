@@ -1,0 +1,45 @@
+
+<app-toast [message]="toastMessage" [type]="toastType"></app-toast>
+
+<form [formGroup]="signupForm" (ngSubmit)="submit()">
+  <h2>Sign Up</h2>
+  <input type="text" placeholder="First Name" formControlName="firstName" />
+  <div *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched">
+    First name is required
+  </div>
+
+  <input type="text" placeholder="Last Name" formControlName="lastName" />
+  <div *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched">
+    Last name is required
+  </div>
+
+  <input type="email" placeholder="Email" formControlName="email" />
+  <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+    Valid email is required
+  </div>
+
+  <input type="password" placeholder="Password" formControlName="password" />
+
+  <select formControlName="role">
+    <option value="" disabled selected>Choose Role</option>
+    <option value="USER_ROLE">User</option>
+    <option value="ADMIN_ROLE">Admin</option>
+  </select>
+  <div *ngIf="signupForm.get('role')?.invalid && signupForm.get('role')?.touched">
+    Role is required
+  </div>
+
+  <button type="submit" [disabled]="loading">
+    {{ loading ? 'Signing up...' : 'Sign Up' }}
+  </button>
+
+  <p *ngIf="errorMsg" style="color:red">
+    {{ errorMsg }}
+  </p>
+
+  <p style="text-align:center; margin-top: 15px;">
+    Already have an account?
+    <a routerLink="/login" style="color:#4f46e5; text-decoration:none;">Login here</a>
+  </p>
+
+</form>
