@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastComponent } from './toast/toast.component';
+import { RouterModule } from '@angular/router';
+import { SideNavbarComponent } from './side-navbar/side-navbar.component';
 
 @NgModule({
   declarations: [
-    ToastComponent
+    ToastComponent,
+    SideNavbarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
-    ToastComponent
+    ToastComponent,
+    SideNavbarComponent
   ]
 })
 export class SharedModule { }

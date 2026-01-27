@@ -1,0 +1,69 @@
+/* Sidebar container */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 24px 0;
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(180deg, #1f2937, #111827);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* Items */
+li {
+  width: 100%;
+}
+
+/* Links */
+a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 14px 22px;
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+/* Left indicator */
+a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 0;
+  background: #4f46e5;
+  border-radius: 0 6px 6px 0;
+  transform: translateY(-50%);
+  transition: height 0.25s ease;
+}
+
+/* Hover */
+a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  padding-left: 28px;
+}
+
+a:hover::before {
+  height: 60%;
+}
+
+/* Active */
+a.router-link-active {
+  background: rgba(79, 70, 229, 0.15);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+a.router-link-active::before {
+  height: 70%;
+}

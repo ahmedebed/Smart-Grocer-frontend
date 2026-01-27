@@ -1,0 +1,269 @@
+/* Global safety */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ===== Page ===== */
+.page {
+  min-height: 100vh;
+  padding: clamp(18px, 3vw, 50px);
+  background: radial-gradient(
+      1200px 700px at 20% 10%,
+      #eef2ff 0%,
+      transparent 60%
+    ),
+    radial-gradient(900px 600px at 80% 30%, #ecfeff 0%, transparent 55%),
+    #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ===== Card (wide, but premium) ===== */
+.profile-card {
+  width: min(1280px, 98vw); /* الكارت كبير فعلاً */
+  padding: clamp(18px, 2.2vw, 34px);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(10px);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle inner glow */
+.profile-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      900px 300px at 20% 0%,
+      rgba(79, 70, 229, 0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      700px 260px at 85% 15%,
+      rgba(14, 165, 233, 0.1),
+      transparent 55%
+    );
+  pointer-events: none;
+}
+
+/* keep content above overlay */
+.profile-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Header ===== */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.1),
+    rgba(14, 165, 233, 0.1)
+  );
+  border: 1px solid rgba(229, 231, 235, 0.7);
+}
+
+.card-header .left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 18px;
+  color: #111827;
+  background: #fff;
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  box-shadow: 0 14px 28px rgba(79, 70, 229, 0.16);
+  flex: 0 0 auto;
+}
+
+.title-area {
+  min-width: 0;
+}
+
+.profile-card h2 {
+  margin: 0;
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.role-badge {
+  margin: 6px 0 0;
+  font-size: 12px;
+  font-weight: 900;
+  color: #4f46e5;
+  letter-spacing: 0.4px;
+}
+
+.status-pill {
+  font-size: 12px;
+  font-weight: 900;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.status-pill.editing {
+  background: rgba(34, 197, 94, 0.14);
+  color: #166534;
+}
+
+/* ===== Form body (THIS is the trick) ===== */
+.form-body {
+  max-width: 920px; /* يخلي الفورم شيك ومش ممدود */
+  margin: 22px auto 0; /* في النص */
+}
+
+/* ===== Grid ===== */
+.grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 22px !important;
+  margin-top: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 900;
+  color: #334155;
+}
+
+input {
+  width: 100%;
+  height: 48px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 14px;
+  transition: 0.2s ease;
+  min-width: 0;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+}
+
+input:focus {
+  outline: none;
+  border-color: rgba(79, 70, 229, 0.85);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.14);
+}
+
+input:disabled {
+  background: rgba(241, 245, 249, 0.9);
+  color: #0f172a;
+  cursor: not-allowed;
+}
+
+.err {
+  color: #b91c1c;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* ===== Actions ===== */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.btn {
+  flex: 1;
+  height: 50px;
+  border-radius: 14px;
+  border: none;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn.primary {
+  background: #4f46e5;
+  color: #fff;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: #4338ca;
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(79, 70, 229, 0.22);
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(203, 213, 225, 0.95);
+  color: #0f172a;
+}
+
+.btn.ghost:hover:not(:disabled) {
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .form-body {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-pill {
+    align-self: flex-start;
+  }
+
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

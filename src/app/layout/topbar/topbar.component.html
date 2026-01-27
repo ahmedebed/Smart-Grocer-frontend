@@ -1,0 +1,52 @@
+<header class="topbar">
+  <div class="topbar-inner">
+
+    <div class="left">
+      <button class="icon-btn" type="button" (click)="toggleSidebar()">
+        <span class="hamburger">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+
+      <div class="title">
+        <span class="name">Smart Grocery</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <!-- Avatar -->
+      <div class="avatar-wrap" (click)="onAvatarWrapClick($event)">
+        <button
+          class="avatar-btn"
+          type="button"
+          (click)="toggleUserMenu($event)"
+          [attr.aria-expanded]="isUserMenuOpen"
+          aria-haspopup="menu">
+
+          <span class="avatar">{{ getInitials() }}</span>
+          <span class="caret">▾</span>
+        </button>
+
+        <!-- Dropdown -->
+        <div class="user-menu" *ngIf="isUserMenuOpen">
+          <button class="menu-item" (click)="goToProfile()">
+            <span class="mi-icon">👤</span>
+            <div class="mi-text">
+              <span class="title">Profile</span>
+              <span class="desc">View & edit your info</span>
+            </div>
+          </button>
+
+          <button class="menu-item danger" (click)="logout()">
+            <span class="mi-icon">🚪</span>
+            <div class="mi-text">
+              <span class="title">Logout</span>
+              <span class="desc">Sign out of your account</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>

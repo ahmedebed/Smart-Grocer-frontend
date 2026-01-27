@@ -1,0 +1,28 @@
+<ul>
+  <li *ngIf="isAdmin()">
+    <a
+      routerLink="/external-meals"
+      routerLinkActive="router-link-active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      External Meals
+    </a>
+  </li>
+
+  <li *ngIf="isAdmin()">
+    <a
+      routerLink="/my-meals"
+      routerLinkActive="router-link-active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      My Meals
+    </a>
+  </li>
+
+  <li>
+    <a
+      routerLink="/profile"
+      routerLinkActive="router-link-active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      Profile
+    </a>
+  </li>
+</ul>

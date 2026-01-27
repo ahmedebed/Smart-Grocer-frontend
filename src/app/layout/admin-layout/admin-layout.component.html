@@ -1,0 +1,16 @@
+<app-topbar></app-topbar>
+
+<div class="layout">
+  <aside class="sidebar" [class.collapsed]="collapsed">
+    <!-- sidebar links -->
+    <div class="logo">Smart Grocery</div>
+
+    <a class="item" routerLink="/admin/dashboard">Extrnal Meal</a>
+    <a class="item" routerLink="/admin/users">Meals</a>
+    <a class="item" routerLink="/admin/profile">My Profile</a>
+  </aside>
+
+  <main class="content" [class.collapsed]="collapsed">
+    <router-outlet></router-outlet>
+  </main>
+</div>

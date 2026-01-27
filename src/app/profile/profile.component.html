@@ -1,0 +1,78 @@
+<div class="page">
+  <div class="profile-card" *ngIf="!loading; else loadingTpl">
+
+    <div class="card-header">
+      <div class="left">
+        <div class="avatar">a</div>
+        <div class="title-area">
+          <h2>My Profile</h2>
+          <p class="role-badge">{{ role }}</p>
+        </div>
+      </div>
+
+      <span class="status-pill" [class.editing]="editMode">
+        {{ editMode ? 'Editing' : 'Read only' }}
+      </span>
+    </div>
+
+
+    <form [formGroup]="profileForm" (ngSubmit)="save()">
+
+      <div class="grid">
+        <div class="field">
+          <label>First Name</label>
+          <input type="text" formControlName="firstName" placeholder="First name" />
+          <small class="err" *ngIf="isInvalid('firstName')">First name is required</small>
+        </div>
+
+        <div class="field">
+          <label>Last Name</label>
+          <input type="text" formControlName="lastName" placeholder="Last name" />
+          <small class="err" *ngIf="isInvalid('lastName')">Last name is required</small>
+        </div>
+
+        <div class="field full">
+          <label>Email</label>
+          <input type="email" formControlName="email" placeholder="Email" />
+          <small class="err" *ngIf="isInvalid('email')">Enter a valid email</small>
+        </div>
+      </div>
+
+      <div class="actions">
+        <!-- View mode -->
+        <button
+          *ngIf="!editMode"
+          type="button"
+          class="btn primary"
+          (click)="enableEdit()">
+          Update
+        </button>
+
+        <!-- Edit mode -->
+        <ng-container *ngIf="editMode">
+          <button type="submit" class="btn primary" [disabled]="saving">
+            {{ saving ? 'Saving...' : 'Save' }}
+          </button>
+
+          <button type="button" class="btn ghost" (click)="cancelEdit()" [disabled]="saving">
+            Cancel
+          </button>
+        </ng-container>
+      </div>
+
+      <app-toast [message]="successMsg" type="success"></app-toast>
+      <app-toast [message]="errorMsg" type="error"></app-toast>
+
+    </form>
+  </div>
+
+  <ng-template #loadingTpl>
+    <div class="profile-card skeleton">
+      <div class="sk-line w60"></div>
+      <div class="sk-line w40"></div>
+      <div class="sk-line"></div>
+      <div class="sk-line"></div>
+      <div class="sk-line"></div>
+    </div>
+  </ng-template>
+</div>

@@ -56,4 +56,50 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
+  getRoleFromToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.role;
+  }
+  isAdmin(): boolean {
+    return this.getRoleFromToken() === 'ADMIN_ROLE';
+  }
+
+  getSubFromToken(): string | null {
+    const token = this.getToken();
+    if (!token) return null;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.sub || null;
+    } catch {
+      return null;
+    }
+  }
+
+  getInitialsFromSub(): string {
+    const sub = this.getSubFromToken() || 'user@example.com';
+    const beforeAt = sub.split('@')[0] || 'user';
+
+
+    const parts = beforeAt
+      .split(/[.\-_ ]+/)
+      .filter(Boolean);
+
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+
+    const w = parts[0] || 'user';
+    const a = w[0] || 'U';
+    const b = w[1] || 'U';
+    return (a + b).toUpperCase();
+  }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.clear();
+  }
+
 }

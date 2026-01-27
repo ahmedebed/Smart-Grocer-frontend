@@ -45,13 +45,19 @@ export class LoginComponent {
         this.toastMessage = 'Login successful!';
         this.toastType = 'success';
 
-        // Save token in localStorage
         this.authService.saveToken(res.token);
+
+        const role = this.authService.getRoleFromToken();
 
         setTimeout(() => {
           this.toastMessage = '';
-          // Navigate to dashboard after successful login
-          this.router.navigate(['/dashboard']);
+
+          if (role === 'ADMIN_ROLE') {
+            this.router.navigate(['/external-meals']);
+          } else {
+            this.router.navigate(['/my-meals']);
+          }
+
         }, 1000);
       },
       error: (err) => {

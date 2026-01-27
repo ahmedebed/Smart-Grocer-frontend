@@ -1,24 +1,45 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { ApprovedMealsComponent } from './pages/approved-meals/approved-meals.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutComponent } from './layout/layout.component';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { TopbarComponent } from './layout/topbar/topbar.component';
+import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
-    ApprovedMealsComponent
+    ApprovedMealsComponent,
+    LayoutComponent,
+    AdminLayoutComponent,
+    TopbarComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

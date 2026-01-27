@@ -1,0 +1,84 @@
+<div class="page">
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search by name or category"
+      [(ngModel)]="searchTerm"
+    />
+    <button class="btn primary" (click)="search()">Search</button>
+    <button class="btn ghost" (click)="reset()">Remove</button>
+  </div>
+  <!-- Table -->
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Area</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let meal of meals; let i = index">
+
+          <td>
+            <img [src]="meal.strMealThumb" alt="meal" />
+          </td>
+
+          <td>{{ meal.strMeal }}</td>
+          <td>{{ meal.strCategory }}</td>
+          <td>{{ meal.strArea }}</td>
+
+          <!-- Actions -->
+          <td class="actions">
+            <button
+              class="dots-btn"
+              (click)="toggleMenu(i, $event)">
+              ⋮
+            </button>
+
+            <div class="menu" *ngIf="openMenuIndex === i">
+              <button
+                class="menu-item approve"
+                (click)="approveMeal(meal.idMeal); $event.stopPropagation()">
+                ✔ Approve
+              </button>
+
+              <button class="menu-item details">
+                👁 Show Details
+              </button>
+            </div>
+          </td>
+
+        </tr>
+
+        <tr *ngIf="meals.length === 0">
+          <td colspan="5" class="empty">
+            No meals found
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button
+      *ngFor="let p of totalPagesArray; let i = index"
+      [class.active]="page === i"
+      (click)="changePage(i)">
+      {{ i + 1 }}
+    </button>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<app-toast
+  [message]="toastMessage"
+  [type]="toastType">
+</app-toast>
