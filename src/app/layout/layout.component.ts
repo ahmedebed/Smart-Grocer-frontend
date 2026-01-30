@@ -1,6 +1,6 @@
-// layout.component.ts
 import { Component } from '@angular/core';
-import { LayoutService } from './layout.service';
+import { LayoutService } from '../layout/layout.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-layout',
@@ -8,9 +8,15 @@ import { LayoutService } from './layout.service';
   styleUrls: ['./layout.component.css'],
 })
 export class LayoutComponent {
-  collapsed = false;
 
-  constructor(private layout: LayoutService) {
-    this.layout.collapsed$.subscribe(v => (this.collapsed = v));
+  collapsed = false;
+  isAdmin = false;
+
+  constructor(
+    private layout: LayoutService,
+    private auth: AuthService
+  ) {
+    this.layout.collapsed$.subscribe(v => this.collapsed = v);
+    this.isAdmin = this.auth.isAdmin();
   }
 }

@@ -14,6 +14,7 @@ import { TopbarComponent } from './layout/topbar/topbar.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { ShoppingListComponent } from './features/shopping-list/pages/shopping-list/shopping-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     LayoutComponent,
     AdminLayoutComponent,
     TopbarComponent,
+    ShoppingListComponent,
 
   ],
   imports: [

@@ -1,100 +1,101 @@
-.page{
+.page {
   padding: 90px 24px 24px;
 }
 
 /* Search bar */
-.search-bar{
-  display:flex;
-  gap:12px;
-  margin-bottom:20px;
+.search-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-.search-bar input{
-  flex:1;
-  padding:12px;
-  border-radius:10px;
-  border:1px solid #e5e7eb;
+.search-bar input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
 }
 
-.btn{
-  padding:10px 16px;
-  border-radius:10px;
-  border:1px solid transparent;
-  cursor:pointer;
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
 }
 
-.btn.primary{
-  background:#2563eb;
-  color:#fff;
+.btn.primary {
+  background: #2563eb;
+  color: #fff;
 }
 
-.btn.ghost{
-  background:#f3f4f6;
+.btn.ghost {
+  background: #f3f4f6;
 }
 
 /* Table */
-.card{
-  background:#fff;
-  border-radius:14px;
-  box-shadow:0 12px 25px rgba(0,0,0,.08);
-  overflow:hidden;
+.card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  overflow: visible;
 }
 
-table{
-  width:100%;
-  border-collapse:collapse;
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-th,td{
-  padding:14px;
-  text-align:left;
+th,
+td {
+  padding: 14px;
+  text-align: left;
 }
 
-th{
-  background:#f9fafb;
-  font-weight:700;
+th {
+  background: #f9fafb;
+  font-weight: 700;
 }
 
-tbody tr:hover{
-  background:#f3f4f6;
+tbody tr:hover {
+  background: #f3f4f6;
 }
 
-img{
-  width:50px;
-  border-radius:8px;
+img {
+  width: 50px;
+  border-radius: 8px;
 }
 
 /* Pagination */
-.pagination{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:20px;
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.pagination button{
-  width:36px;
-  height:36px;
-  border-radius:999px;
-  border:1px solid #e5e7eb;
-  background:#fff;
-  cursor:pointer;
+.pagination button {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
 }
 
-.pagination button.active{
-  background:#2563eb;
-  color:#fff;
-  border-color:#2563eb;
+.pagination button.active {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
 }
 
 /* Actions column */
-.actions{
+.actions {
   position: relative;
   width: 60px;
 }
 
 /* 3 dots button */
-.dots-btn{
+.dots-btn {
   background: transparent;
   border: none;
   font-size: 20px;
@@ -103,22 +104,22 @@ img{
   border-radius: 10px;
 }
 
-.dots-btn:hover{
+.dots-btn:hover {
   background: #e5e7eb;
 }
 
 /* Dropdown menu */
-.menu{
+.menu {
   position: absolute;
   right: 0;
   top: 36px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   width: 170px;
   overflow: hidden;
   z-index: 20;
-  animation: fadeIn .15s ease-out;
+  animation: fadeIn 0.15s ease-out;
 }
 
 @keyframes fadeIn {
@@ -133,7 +134,7 @@ img{
 }
 
 /* Menu items */
-.menu-item{
+.menu-item {
   width: 100%;
   padding: 12px 14px;
   border: none;
@@ -143,15 +144,36 @@ img{
   font-size: 14px;
 }
 
-.menu-item:hover{
+.menu-item:hover {
   background: #f3f4f6;
 }
 
-.menu-item.approve{
+.menu-item.approve {
   color: #16a34a;
   font-weight: 600;
 }
 
-.menu-item.details{
+.menu-item.details {
   color: #2563eb;
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.loader span {
+  width: 42px;
+  height: 42px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

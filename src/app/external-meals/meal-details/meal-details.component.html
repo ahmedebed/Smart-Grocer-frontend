@@ -1,0 +1,74 @@
+<div class="details-page" *ngIf="meal">
+
+  <!-- ===== Top Card ===== -->
+  <div class="header">
+
+    <!-- Meal Image -->
+    <div class="image-wrapper">
+      <img [src]="meal.strMealThumb" alt="meal image" />
+    </div>
+
+    <!-- Info -->
+    <div class="info">
+
+      <div class="title-block">
+        <h1>{{ meal.strMeal }}</h1>
+
+        <!-- Tags -->
+        <div class="tags">
+          <span class="tag category">
+            {{ meal.strCategory }}
+          </span>
+
+          <span class="tag area">
+            {{ meal.strArea }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Approve Button -->
+      <button class="approve-btn" (click)="approveMeal()">
+        ✔ Approve Meal
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ===== Instructions ===== -->
+  <div class="section instructions">
+    <h2>Instructions</h2>
+    <p>{{ meal.strInstructions }}</p>
+  </div>
+
+  <!-- ===== Ingredients ===== -->
+  <div class="section ingredients-section">
+
+    <div class="section-header">
+      <h2>Ingredients</h2>
+      <span class="count">
+        {{ ingredients?.length }} Items
+      </span>
+    </div>
+
+    <div class="ingredients">
+      <div class="ingredient-card" *ngFor="let ing of ingredients">
+
+        <div class="ingredient-name">
+          {{ ing.name }}
+        </div>
+
+        <div class="ingredient-measure">
+          {{ ing.measure }}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<app-toast
+  [message]="toastMessage"
+  [type]="toastType">
+</app-toast>

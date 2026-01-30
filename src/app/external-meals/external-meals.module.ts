@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { ExternalMealsRoutingModule } from './external-meals-routing.module';
 import { ExternalMealsComponent } from './external-meals.component';
 import { SharedModule } from '../shared/shared.module';
+import { MealDetailsComponent } from './meal-details/meal-details.component';
 
 @NgModule({
   declarations: [
-    ExternalMealsComponent
+    ExternalMealsComponent,
+    MealDetailsComponent
   ],
   imports: [
     CommonModule,

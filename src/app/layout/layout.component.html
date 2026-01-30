@@ -1,4 +1,3 @@
-<!-- layout.component.html -->
 <div class="layout-shell" [class.collapsed]="collapsed">
   <app-topbar></app-topbar>
 
@@ -10,20 +9,43 @@
       </div>
 
       <nav class="nav">
-        <a class="nav-item" routerLink="/external-meals" routerLinkActive="active">
-          <span class="nav-icon">EM</span>
-          <span class="nav-text">External Meals</span>
-        </a>
 
-        <a class="nav-item" routerLink="/my-meals" routerLinkActive="active">
-          <span class="nav-icon">MM</span>
-          <span class="nav-text">My Meals</span>
-        </a>
+        <!-- Admin -->
+        <ng-container *ngIf="isAdmin; else userMenu">
 
+          <a class="nav-item" routerLink="/external-meals" routerLinkActive="active">
+            <span class="nav-icon">EM</span>
+            <span class="nav-text">External Meals</span>
+          </a>
+
+          <a class="nav-item" routerLink="/my-meals" routerLinkActive="active">
+            <span class="nav-icon">MM</span>
+            <span class="nav-text">My Meals</span>
+          </a>
+
+        </ng-container>
+
+        <!-- User -->
+        <ng-template #userMenu>
+
+          <a class="nav-item" routerLink="/meals" routerLinkActive="active">
+            <span class="nav-icon">M</span>
+            <span class="nav-text">Meals</span>
+          </a>
+
+          <a class="nav-item" routerLink="/shopping-list" routerLinkActive="active">
+            <span class="nav-icon">SL</span>
+            <span class="nav-text">Shopping List</span>
+          </a>
+
+        </ng-template>
+
+        <!-- For All -->
         <a class="nav-item" routerLink="/profile" routerLinkActive="active">
           <span class="nav-icon">MP</span>
           <span class="nav-text">My Profile</span>
         </a>
+
       </nav>
     </aside>
 

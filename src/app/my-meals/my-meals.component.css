@@ -1,0 +1,284 @@
+.page {
+  padding: 90px 24px 24px;
+}
+
+/* ================= Table Card ================= */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  overflow: visible;
+  position: relative;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+}
+
+th {
+  background: #f9fafb;
+  font-weight: 700;
+}
+
+tbody tr:hover {
+  background: #f3f4f6;
+}
+
+img {
+  width: 50px;
+  border-radius: 8px;
+}
+
+/* ================= Status ================= */
+.status {
+  text-align: center;
+}
+
+.status-icon {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.status-icon.approved {
+  color: #16a34a;
+}
+
+.status-icon.not-approved {
+  color: #dc2626;
+}
+
+/* ================= Actions ================= */
+.actions {
+  position: relative;
+  width: 60px;
+}
+
+.dots-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 10px;
+}
+
+.dots-btn:hover {
+  background: #e5e7eb;
+}
+
+/* Dropdown menu */
+.menu {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  width: 180px;
+  z-index: 1000;
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-item {
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.menu-item:hover {
+  background: #f3f4f6;
+}
+
+.menu-item.details {
+  color: #2563eb;
+}
+
+.menu-item.approve {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.menu-item.delete {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* ================= Pagination ================= */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.empty {
+  text-align: center;
+  padding: 30px;
+}
+
+/* ================= Delete Overlay ================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOverlay 0.2s ease-out;
+}
+
+@keyframes fadeOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.search-bar{
+  display:flex;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.search-bar input{
+  flex:1;
+  padding:12px;
+  border-radius:10px;
+  border:1px  #e5e7eb;
+}
+
+.btn{
+  padding:10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  border:none;    
+}
+
+.btn.primary{
+  background:#2563eb;
+  color:#fff;
+}
+
+.btn.ghost{
+  background:#f3f4f6;
+}
+
+/* ================= Delete Card ================= */
+.delete-card {
+  background: #fff;
+  width: 380px;
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.delete-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.delete-card p {
+  margin: 0 0 22px;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ================= Delete Buttons ================= */
+.delete-card .popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.delete-card button {
+  min-width: 96px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+/* Cancel */
+.delete-card .cancel {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.delete-card .cancel:hover {
+  background: #e5e7eb;
+}
+
+.delete-card .cancel:popup-actions {
+  transform: scale(0.97);
+}
+
+/* Delete */
+.delete-card .delete {
+  background: #dc2626;
+  color: #fff;
+}
+
+.delete-card .delete:hover {
+  background: #b91c1c;
+}
+
+.delete-card .delete:popup-actions {
+  transform: scale(0.97);
+}

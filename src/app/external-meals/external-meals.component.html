@@ -9,9 +9,13 @@
     <button class="btn primary" (click)="search()">Search</button>
     <button class="btn ghost" (click)="reset()">Remove</button>
   </div>
-  <!-- Table -->
+
   <div class="card">
+
     <table>
+      <div class="loader" *ngIf="loading">
+        <span></span>
+      </div>
       <thead>
         <tr>
           <th>Image</th>
@@ -33,7 +37,6 @@
           <td>{{ meal.strCategory }}</td>
           <td>{{ meal.strArea }}</td>
 
-          <!-- Actions -->
           <td class="actions">
             <button
               class="dots-btn"
@@ -48,7 +51,9 @@
                 ✔ Approve
               </button>
 
-              <button class="menu-item details">
+              <button
+                class="menu-item details"
+                (click)="showDetails(meal.idMeal); $event.stopPropagation()">
                 👁 Show Details
               </button>
             </div>
@@ -65,7 +70,6 @@
     </table>
   </div>
 
-  <!-- Pagination -->
   <div class="pagination" *ngIf="totalPages > 1">
     <button
       *ngFor="let p of totalPagesArray; let i = index"
@@ -77,7 +81,6 @@
 
 </div>
 
-<!-- Toast -->
 <app-toast
   [message]="toastMessage"
   [type]="toastType">

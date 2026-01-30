@@ -33,6 +33,13 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () =>
           import('./profile/profile.module').then(m => m.ProfileModule)
+      },
+
+      {
+        path: 'shopping-list',
+        loadChildren: () =>
+          import('./features/shopping-list/shopping-list.module')
+            .then(m => m.ShoppingListModule)
       }
     ]
   },

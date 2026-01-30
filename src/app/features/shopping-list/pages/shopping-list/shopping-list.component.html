@@ -1,0 +1,82 @@
+<div class="shopping-container">
+
+  <!-- Title -->
+  <div class="header">
+    <h2>My Shopping List</h2>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading" *ngIf="loading">
+    Loading shopping list...
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrapper" *ngIf="!loading">
+
+    <table class="shopping-table" *ngIf="items.length > 0">
+
+      <thead>
+        <tr>
+          <th>Meal</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of items">
+
+          <!-- Meal Info -->
+          <td class="meal-cell">
+            <img [src]="item.meal?.imageUrl" />
+            <div class="meal-info">
+              <div class="meal-name">{{ item.meal?.name }}</div>
+              <div class="meal-category">{{ item.meal?.category }}</div>
+            </div>
+          </td>
+
+          <!-- Price -->
+          <td>
+            {{ item.meal?.price | currency }}
+          </td>
+
+          <!-- Quantity -->
+          <td>
+            {{ item.quantity }}
+          </td>
+
+          <!-- Row Total -->
+          <td>
+            {{ (item.meal?.price || 0) * (item.quantity || 0) | currency }}
+          </td>
+
+          <!-- Delete -->
+          <td>
+            <button
+              class="delete-btn"
+              (click)="deleteItem(item.id)">
+              Delete
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+
+    <!-- Empty State -->
+    <div class="empty" *ngIf="items.length === 0">
+      Your shopping list is empty
+    </div>
+
+  </div>
+
+  <!-- Footer Total -->
+  <div class="footer-total" *ngIf="items.length > 0">
+    Total Price:
+    <span>{{ getTotalPrice() | currency }}</span>
+  </div>
+
+</div>

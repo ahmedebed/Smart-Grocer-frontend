@@ -25,4 +25,8 @@ export class ExternalMealsService {
       {}
     );
   }
+  getMealById(mealId: string) {
+    return this.http.get<any>(`${this.BASE_URL}/${mealId}`);
+  }
+
 }
