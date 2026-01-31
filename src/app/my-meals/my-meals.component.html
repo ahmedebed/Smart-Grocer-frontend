@@ -1,5 +1,4 @@
 <div class="page">
-
   <div class="search-bar">
     <input
       type="text"
@@ -8,13 +7,9 @@
       (keyup.enter)="search()"
     />
 
-    <button class="btn primary" (click)="search()">
-      Search
-    </button>
+    <button class="btn primary" (click)="search()">Search</button>
 
-    <button class="btn ghost" (click)="reset()">
-      Remove
-    </button>
+    <button class="btn ghost" (click)="reset()">Remove</button>
   </div>
 
   <!-- Table -->
@@ -32,9 +27,7 @@
       </thead>
 
       <tbody>
-
         <tr *ngFor="let meal of meals; let i = index">
-
           <td>
             <img [src]="meal.thumbnail" alt="meal" />
           </td>
@@ -46,48 +39,36 @@
           <!-- Status -->
           <td class="status">
             <span *ngIf="meal.approved" class="status-icon approved">✔</span>
-            <span *ngIf="!meal.approved" class="status-icon not-approved">✖</span>
+            <span *ngIf="!meal.approved" class="status-icon not-approved"
+              >✖</span
+            >
           </td>
 
           <!-- Actions -->
           <td class="actions">
-            <button
-              class="dots-btn"
-              (click)="toggleMenu(i, $event)">
-              ⋮
-            </button>
+            <button class="dots-btn" (click)="toggleMenu(i, $event)">⋮</button>
 
             <div class="menu" *ngIf="openMenuIndex === i">
-
-              <button
-                class="menu-item details"
-                (click)="showDetails(meal.id)">
-                👁 Show Details
-              </button>
-
               <button
                 class="menu-item approve"
-                (click)="approveMeal(meal.externalId); $event.stopPropagation()">
+                (click)="approveMeal(meal.externalId); $event.stopPropagation()"
+              >
                 ✔ Approve
               </button>
 
               <button
                 class="menu-item delete"
-                (click)="openDelete(meal.id); $event.stopPropagation()">
+                (click)="openDelete(meal.id); $event.stopPropagation()"
+              >
                 🗑 Delete
               </button>
-
             </div>
           </td>
-
         </tr>
 
         <tr *ngIf="meals.length === 0">
-          <td colspan="6" class="empty">
-            No meals found
-          </td>
+          <td colspan="6" class="empty">No meals found</td>
         </tr>
-
       </tbody>
     </table>
   </div>
@@ -97,22 +78,18 @@
     <button
       *ngFor="let p of totalPagesArray; let i = index"
       [class.active]="page === i"
-      (click)="changePage(i)">
+      (click)="changePage(i)"
+    >
       {{ i + 1 }}
     </button>
   </div>
-
 </div>
 
-<app-toast
-  [message]="toastMessage"
-  [type]="toastType">
-</app-toast>
+<app-toast [message]="toastMessage" [type]="toastType"> </app-toast>
 
 <!-- Delete Popup -->
 <div class="overlay" *ngIf="mealToDelete !== null" (click)="cancelDelete()">
   <div class="delete-card" (click)="$event.stopPropagation()">
-
     <h3>Delete Meal</h3>
     <p>
       Are you sure you want to delete this meal?
@@ -121,14 +98,9 @@
     </p>
 
     <div class="popup-actions">
-      <button class="cancel" (click)="cancelDelete()">
-        Cancel
-      </button>
+      <button class="cancel" (click)="cancelDelete()">Cancel</button>
 
-      <button class="delete" (click)="confirmDelete()">
-        Delete
-      </button>
+      <button class="delete" (click)="confirmDelete()">Delete</button>
     </div>
-
   </div>
 </div>

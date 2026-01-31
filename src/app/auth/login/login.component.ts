@@ -27,7 +27,6 @@ export class LoginComponent {
   ) {}
 
   submit() {
-    // Stop submission if form is invalid
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
@@ -36,38 +35,35 @@ export class LoginComponent {
     this.loading = true;
     this.errorMsg = '';
 
-    // Cast form value to correct type to satisfy TypeScript
-    const loginData = this.loginForm.value as { email: string; password: string };
+    const loginData = this.loginForm.value as {
+      email: string;
+      password: string;
+    };
 
     this.authService.login(loginData).subscribe({
       next: (res) => {
         this.loading = false;
-        this.toastMessage = 'Login successful!';
-        this.toastType = 'success';
 
         this.authService.saveToken(res.token);
 
         const role = this.authService.getRoleFromToken();
 
-        setTimeout(() => {
-          this.toastMessage = '';
-
-          if (role === 'ADMIN_ROLE') {
-            this.router.navigate(['/external-meals']);
-          } else {
-            this.router.navigate(['/meals']);
-          }
-
-        }, 1000);
+        if (role === 'ADMIN_ROLE') {
+          this.router.navigate(['/external-meals']);
+        } else {
+          this.router.navigate(['/meals']);
+        }
       },
       error: (err) => {
         this.loading = false;
-        this.toastMessage = 'Login failed. Try again!';
-        this.toastType = 'error';
-        this.errorMsg = err.error?.message || 'Something went wrong';
-
-        setTimeout(() => (this.toastMessage = ''), 3000);
+        this.errorMsg = err.error?.message || 'Invalid email or password';
       }
     });
   }
+  showPassword = false;
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
+
 }

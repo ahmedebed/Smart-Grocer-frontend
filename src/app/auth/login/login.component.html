@@ -6,21 +6,43 @@
   <!-- Email -->
   <div
     class="field"
-    [class.has-error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+    [class.has-error]="
+      loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+    "
   >
     <input type="email" placeholder="Email" formControlName="email" />
-    <div class="error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+    <div
+      class="error"
+      *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+    >
       Valid email is required
     </div>
   </div>
 
   <!-- Password -->
   <div
-    class="field"
-    [class.has-error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+    class="field password-field"
+    [class.has-error]="
+      loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+    "
   >
-    <input type="password" placeholder="Password" formControlName="password" />
-    <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+    <input
+      [type]="showPassword ? 'text' : 'password'"
+      placeholder="Password"
+      formControlName="password"
+    />
+
+    <!-- Eye icon -->
+    <span class="toggle-password" (click)="togglePassword()">
+      {{ showPassword ? "🙈" : "👁️" }}
+    </span>
+
+    <div
+      class="error"
+      *ngIf="
+        loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+      "
+    >
       Password is required
     </div>
   </div>
