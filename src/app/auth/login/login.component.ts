@@ -55,7 +55,7 @@ export class LoginComponent {
           if (role === 'ADMIN_ROLE') {
             this.router.navigate(['/external-meals']);
           } else {
-            this.router.navigate(['/my-meals']);
+            this.router.navigate(['/meals']);
           }
 
         }, 1000);

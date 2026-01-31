@@ -1,0 +1,37 @@
+<div class="meals-container">
+  <h2 class="page-title">Discover Meals</h2>
+
+  <div class="meals-grid">
+    <div class="meal-card" *ngFor="let meal of meals">
+      <div class="image-wrapper">
+        <img [src]="meal.thumbnail" alt="meal image" />
+      </div>
+
+      <div class="meal-content">
+        <h3 class="meal-name">{{ meal.name }}</h3>
+
+        <p class="meal-category">{{ meal.category }} • {{ meal.area }}</p>
+
+        <div class="meal-price">
+          {{ getTotalMealPrice(meal) | currency : "EGP" : "symbol" }}
+        </div>
+
+        <!-- Quantity -->
+        <div class="quantity-box">
+          <button class="qty-btn" (click)="decreaseQty(meal)">-</button>
+
+          <span class="qty-number">
+            {{ meal.quantity }}
+          </span>
+
+          <button class="qty-btn" (click)="increaseQty(meal)">+</button>
+        </div>
+
+        <!-- Add Button -->
+        <button class="add-btn" (click)="addToShoppingList(meal)">
+          Add To Shopping List
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

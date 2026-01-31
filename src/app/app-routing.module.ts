@@ -34,13 +34,19 @@ const routes: Routes = [
         loadChildren: () =>
           import('./profile/profile.module').then(m => m.ProfileModule)
       },
-
+      {
+        path: 'meals',
+        loadChildren: () =>
+          import('./features/meals/meals.module')
+            .then(m => m.MealsModule)
+      },
       {
         path: 'shopping-list',
         loadChildren: () =>
           import('./features/shopping-list/shopping-list.module')
             .then(m => m.ShoppingListModule)
       }
+
     ]
   },
 
